@@ -1,12 +1,26 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'ageProofPresence'
-    spec.version                  = '1.2.0-beta.4595'
+    spec.version                  = '1.2.0-beta.4598'
     spec.homepage                 = 'https://github.com/luciditi-digital-id/age-proof-ios-presence-packages'
-    spec.source                   = { :http => 'https://github.com/luciditi-digital-id/age-proof-ios-presence-packages/releases/download/v1.2.0-beta.4595/ageProofPresence.xcframework.zip', :sha256 => '7782f5066a40205d371ad0e038b389d91e421cf44ceb737c273d7a4a2233fe37' }
+    spec.source                   = { :http => 'https://github.com/luciditi-digital-id/age-proof-ios-presence-packages/releases/download/v1.2.0-beta.4598/ageProofPresence.xcframework.zip', :sha256 => '94740d9db899a2ff13053a46ea9ccf83898fbbed7eaf9a444f01462d9a231be9' }
     spec.authors                  = 'Arissian'
     spec.license                  = { :type => 'Commercial', :text => 'See LICENSE' }
     spec.summary                  = 'Luciditi Age Proof with Presence Library'
     spec.vendored_frameworks      = 'ageProofPresence.xcframework'
+    # Compose reads these resources from the app bundle, rather than a .bundle
+    # or the static framework. Stage one architecture-independent copy before
+    # CocoaPods collects resource paths, retaining the complete directory tree.
+    spec.prepare_command = <<-'CMD'
+set -eu
+source_resources="ageProofPresence.xcframework/ios-arm64/ageProofPresence.framework/composeResources"
+if [ ! -d "$source_resources" ]; then
+    echo "error: AgeProof Presence archive is missing Compose resources" >&2
+    exit 1
+fi
+mkdir -p compose-resources
+/usr/bin/ditto "$source_resources" compose-resources/composeResources
+CMD
+    spec.resources = 'compose-resources'
     spec.libraries                = 'c++'
     spec.ios.deployment_target    = '16.0'
     spec.dependency 'GoogleMLKit/BarcodeScanning', '9.0.0'
