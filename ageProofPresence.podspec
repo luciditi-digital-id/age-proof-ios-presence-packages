@@ -1,8 +1,8 @@
 Pod::Spec.new do |spec|
     spec.name                     = 'ageProofPresence'
-    spec.version                  = '1.2.1-beta.4739'
+    spec.version                  = '1.2.1-beta.4750'
     spec.homepage                 = 'https://github.com/luciditi-digital-id/age-proof-ios-presence-packages'
-    spec.source                   = { :http => 'https://github.com/luciditi-digital-id/age-proof-ios-presence-packages/releases/download/v1.2.1-beta.4739/ageProofPresence.xcframework.zip', :sha256 => 'f107a46dfa9a7b47921266e66fb43ae2c578169ce5a5688d98a55473e7448e65' }
+    spec.source                   = { :http => 'https://github.com/luciditi-digital-id/age-proof-ios-presence-packages/releases/download/v1.2.1-beta.4750/ageProofPresence.xcframework.zip', :sha256 => 'ab6239c1063eca185d4034324d23d6509d0de0c13449387d44db7073299e8a1e' }
     spec.authors                  = 'Arissian'
     spec.license                  = { :type => 'Commercial', :text => 'See LICENSE' }
     spec.summary                  = 'Luciditi Age Proof with Presence Library'
